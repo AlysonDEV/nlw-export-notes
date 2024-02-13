@@ -25,6 +25,8 @@ export function NewNoteCard({onNoteCreated}:NewNoteCardProps) {
   function handleSaveNote(event: FormEvent) {
     event.preventDefault()
 
+    if (content === '') { return }
+
     onNoteCreated(content)
     setContent('')
     setShouldShowOnboarding(true)
@@ -33,6 +35,14 @@ export function NewNoteCard({onNoteCreated}:NewNoteCardProps) {
 
   function handleStartRecording(){
     setIsRecording(true)
+
+    const isSpeechRecognitionAPIAvailable = 'SpeechRecognition' in window || 'webkitSpeechRecognition' in window
+
+    if(!isSpeechRecognitionAPIAvailable) {
+      toast.error('Infelizmente seu navegador não suporta a API de navegação')
+      setIsRecording(false)
+      return
+    }
   }
 
   function handleStopRecording(){
@@ -58,7 +68,7 @@ export function NewNoteCard({onNoteCreated}:NewNoteCardProps) {
             <X className='size-5'/>
           </Dialog.Close>
 
-          <form onSubmit={handleSaveNote} className='flex-1 flex flex-col'>
+          <form className='flex-1 flex flex-col'>
             <div className="flex flex-1 flex-col p-3 gap-5">
               <span className="text-sm font-medium text-slate-300">
                 Adicionar nota
@@ -84,13 +94,15 @@ export function NewNoteCard({onNoteCreated}:NewNoteCardProps) {
               <button 
                 type='button'
                 onClick={handleStopRecording}
-                className='w-full bg-slate-900 py-4 text-center text-sm text-slate-300 outline-none font-medium hover:text-slate-100'
+                className='w-full flex items-center justify-center gap-2 bg-slate-900 py-4 text-center text-sm text-slate-300 outline-none font-medium hover:text-slate-100'
               >
+                <div className='size-3 rounded-full bg-red-500 animate-pulse' />
                 Gravando! (clique para interromper)
               </button>
             ) : (
               <button 
-                type='submit'
+                onClick={handleSaveNote}
+                type='button'
                 className='w-full bg-lime-400 py-4 text-center text-sm text-lime-950 outline-none font-medium hover:bg-lime-500'
               >
                 Salvar nota
