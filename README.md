@@ -1,30 +1,35 @@
-# React + TypeScript + Vite
+# My Notes
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+My Notes is an application for creating annotations on a web page.
 
-Currently, two official plugins are available:
+## Layout
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+To see the complete layout: [figma](https://www.figma.com/file/4QKEPNENTuir0pS1NoM1XO/NLW-expert-%E2%80%A2-Notes-(Community)?type=design&t=phK4OwdH6h7zfsW6-6)
+![image](./.github/cover-figma.png)
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- [x] Add notes
+- [x] Transciption voice to text
+- [x] Detete note
 
-- Configure the top-level `parserOptions` property like this:
+## What was used ?
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+- [x] Vite
+- [x] Tailwind
+- [x] React components
+- [x] Radix UI
+- [x] date-fns
+- [x] Sonner
+- [x] SpeechRecognition
+- [x] Lifting State Up
+- [x] LocalStorage
+
+## For Run
+
+With NPM
+
+```bash
+npm install
+npm run dev
 ```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
