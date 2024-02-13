@@ -43,7 +43,7 @@ export function App() {
 
   }
 
-  function handleSearc(event: ChangeEvent<HTMLInputElement>) {
+  function handleSearch(event: ChangeEvent<HTMLInputElement>) {
     setSearch(event.target.value);
   }
 
@@ -62,7 +62,7 @@ export function App() {
           type="text"
           placeholder="Busque em suas notas..."
           className="w-full bg-transparent text-3xl font-semibold tracking-tighter outline-none placeholder:text-slate-500"
-          onChange={handleSearc}
+          onChange={handleSearch}
           value={search}
         />
       </form>
